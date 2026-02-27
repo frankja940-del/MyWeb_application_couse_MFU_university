@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div class="flex justify-center items-center flex-col min-h-screen bg-base-200">
+        <h2 class="text-center text-2xl font-bold mb-4 ">Asset Management System</h2>
+        <div class="card w-96 bg-base-100 shadow-xl p-6 bg-blue-100">
+            <input id="email" type="text" placeholder=" Email" class="input input-bordered w-full mb-3">
+            <input id="password" type="password" placeholder=" Password" class="input input-bordered w-full mb-4">
+            <button id="loginbtn" class="btn bg-blue-600 text-white hover:bg-blue-700 w-full">Login</button>
+        </div>
+    </div>
+
+    <dialog id="alertModal" class="modal">
+        <div class="modal-box text-center">
+            <img id="alertIcon" class="w-28 h-28 mx-auto mb-6" />
+            <h3 id="alertTitle" class="font-bold text-3xl mb-2"></h3>
+            <p id="alertMessage" class="text-lg mb-6"></p>
+            <div class="modal-action justify-center">
+                <button class="btn btn-primary bg-purple-500 w-24" id="alertOk">OK</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="/public/js/js-asig-login.js"></script>
+
+</body>
+
+</html>

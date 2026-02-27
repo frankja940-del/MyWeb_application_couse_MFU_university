@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+
+    <!-- Tailwind + DaisyUI CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            plugins: [daisyui],
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet" />
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-base-200">
+
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title justify-center">Registration</h2>
+
+            <input id="username" type="text" placeholder="Enter username" class="input input-bordered w-full" />
+
+            <input id="password" type="password" placeholder="Enter password" class="input input-bordered w-full" />
+
+            <input id="confirm" type="password" placeholder="Re-enter password" class="input input-bordered w-full" />
+
+            <p class="text-sm text-info">
+                Captcha = <span id="captchaText"></span>
+            </p>
+
+            <input id="captchaInput" type="number" placeholder="Enter captcha" class="input input-bordered w-full" />
+
+            <button class="btn btn-primary mt-2" onclick="register()">Register</button>
+
+        </div>
+    </div>
+
+    <script>
+        // generate captcha 1000-9999
+        const captcha = Math.floor(1000 + Math.random() * 9000)
+        document.getElementById("captchaText").innerText = captcha
+
+        function register() {
+            const pw = document.getElementById("password").value
+            const cpw = document.getElementById("confirm").value
+            const userCaptcha = document.getElementById("captchaInput").value
+
+            if (pw !== cpw) {
+                alert("❌ Passwords do not match")
+                return
+            }
+
+            if (userCaptcha != captcha) {
+                alert("❌ Wrong captcha")
+                return
+            }
+
+            alert("✅ Register success")
+        }
+    </script>
+
+</body>
+
+</html>

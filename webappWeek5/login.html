@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <!-- Tailwind + DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-base-200">
+
+    <div class="card w-96 bg-base-100 shadow-xl p-6">
+        <h2 class="text-2xl font-bold text-center mb-4">Asset Management System</h2>
+
+        <input id="email" type="text" placeholder="Email"
+            class="input input-bordered border border-base-300 mb-3 w-full p-4" />
+        <input id="password" type="password" placeholder="Password"
+            class="input input-bordered border border-base-300 mb-4 w-full p-4" />
+
+        <button id="loginBtn" class="btn btn-primary bg-purple-500 w-full">Login</button>
+    </div>
+
+    <script>
+        const emailInput = document.getElementById("email");
+        const passInput = document.getElementById("password");
+
+        document.getElementById("loginBtn").onclick = () => {
+
+
+            const email = emailInput.value.trim();
+            const pass = passInput.value.trim();
+
+            if (email === "admin" && pass === "1234") {
+                window.location.href = "asset.html";
+            } else {
+                Swal.fire("Error", "Wrong email or password", "error");
+            }
+        };
+    </script>
+
+</body>
+
+</html>

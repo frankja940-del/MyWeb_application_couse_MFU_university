@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    /*caculate include with padding and border */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #f4f6f8;
+}
+
+/* header ด้านบน */
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* ดันซ้าย-ขวา */
+    align-items: center;
+    padding: 20px;
+    background: rgb(122, 122, 220);
+}
+
+.header h1 {
+    color: white;
+    font-size: 24px;
+}
+
+.signin {
+    margin-left: auto;
+    /* ดันไปขวาสุด */
+    color: white;
+}
+
+/* layout หลัก */
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: calc(100vh - 70px);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* main content */
+main {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+
+}
+
+/* กล่องบทความที่ scroll */
+.article {
+    width: 100%;
+    height: 100%;
+    /* ต้องกำหนดความสูง */
+    overflow: auto;
+    /* ทำให้ scroll */
+    border: 1px solid #000;
+    border-radius: 50px;
+    background-color: rgb(209, 205, 205);
+}
+
+/* sidebar */
+aside {
+    background: #f0f2f5;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+    position: sticky;
+    top: 20px;
+}
+
+/* ตัวอักษร */
+h2 {
+    margin-bottom: 5px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}

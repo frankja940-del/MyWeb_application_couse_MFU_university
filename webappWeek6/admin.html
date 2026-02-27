@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-base-200 min-h-screen p-10">
+
+    <div class="max-w-4xl mx-auto">
+
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">User Management</h2>
+            <button onclick="logout()" class="btn btn-error">Logout</button>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body p-0">
+
+                <table class="table">
+                    <thead class="bg-info text-info-content">
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTable"></tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+
+            if (!currentUser || currentUser.role !== 1) {
+                window.location.replace("login.html");
+                return;
+            }
+
+            renderTable();
+        });
+
+        function renderTable() {
+
+            const users = JSON.parse(sessionStorage.getItem("users")) || [];
+            const table = document.getElementById("userTable");
+            table.innerHTML = "";
+
+            users.forEach(user => {
+
+                const roleBadge = user.role === 1
+                    ? `<span class="badge badge-primary">Admin</span>`
+                    : `<span class="badge badge-ghost">User</span>`;
+
+                const disabled = user.role === 1 ? "disabled" : "";
+
+                table.innerHTML += `
+            <tr>
+                <td>${user.id}</td>
+                <td>${user.username}</td>
+                <td>${roleBadge}</td>
+                <td>
+                    <input type="checkbox" 
+                        class="toggle toggle-info"
+                        ${user.status ? "checked" : ""}
+                        ${disabled}
+                        onchange="toggleStatus(${user.id})">
+                </td>
+            </tr>
+        `;
+            });
+        }
+
+        function toggleStatus(id) {
+
+            let users = JSON.parse(sessionStorage.getItem("users")) || [];
+
+            users = users.map(user => {
+                if (user.id === id && user.role !== 1) {
+                    user.status = !user.status;
+                }
+                return user;
+            });
+
+            sessionStorage.setItem("users", JSON.stringify(users));
+            renderTable();
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.replace("login.html");
+        }
+
+    </script>
+
+
+</body>
+
+</html>

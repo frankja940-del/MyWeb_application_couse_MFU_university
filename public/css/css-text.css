@@ -1,0 +1,36 @@
+body {
+    color: red;
+}
+
+h1 {
+    color: rgb(255, 230, 0);
+}
+
+#green {
+    color: green;
+}
+
+h1.blue {
+    color: blue;
+}
+
+input[type="text"] {
+    display: block;
+    margin: 4px;
+}
+
+input[type="button"] {
+    display: block;
+    margin: 4px;
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+input[type="button"]:hover {
+    cursor: pointer;
+    background-color: rgb(232, 18, 18);
+
+}

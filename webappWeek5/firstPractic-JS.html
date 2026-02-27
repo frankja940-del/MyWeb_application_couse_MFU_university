@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+    <nav class="navbar px-6 w-full flex-row gap-4 py-4 bg-blue-100">
+        <div class="flex-1">
+            <a class="text-xl font-bold">MFU shop</a>
+        </div>
+        <div class=" flex gap-6 items-center">
+            <button class="btn btn-active btn-error">Sign out</button>
+        </div>
+    </nav>
+    <nav class="navbar flex flex-row  gap-4 px-4">
+        <div class="navbar justify-end items-center py-4">
+            <button class="btn btn-success">Add</button>
+        </div>
+    </nav>
+
+    <section class="flex flex-row ">
+        <div class="rounded-xl shadow-lg p-6 text-center flex flex-col bg-base-200 w-64 mx-5 h-96">
+            <img class="h-64 object-cover rounded-lg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz7egXwecd9p867ssmCcntDHXQqhwdxEpoTg&s"
+                alt="">
+
+            <!-- ส่วนรายละเอียด -->
+            <div class="mt-auto">
+                <h1 class="text-lg font-bold">Hat</h1>
+                <p>99 Bath</p>
+
+                <div class="flex gap-4 justify-center mt-4">
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-error">Delete</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="rounded-xl shadow-lg p-6 text-center flex flex-col bg-base-200 w-64 mx-5 h-96">
+            <img src="https://kimurakami.com/cdn/shop/files/luffy-shoes.jpg?v=1718186434" alt=""
+                class="h-64 object-cover rounded-lg">
+            <div class="mt-auto">
+                <h1>shoes</h1>
+                <p>199 Bath</p>
+                <div class="flex gap-4 flex-row">
+                    <button class="btn btn-active btn-warning">Edit</button>
+                    <button class="btn btn-active btn-error">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl shadow-lg p-6 text-center flex flex-col bg-base-200 w-64 mx-5 h-96">
+            <img src="https://cdn.ezcosplay.com/media/catalog/product/n/e/netflix_one_peice_nami_cosplay_costume-1.jpg"
+                alt="" class="h-64 object-cover rounded-lg">
+            <div class="mt-auto">
+                <h1>Skirt</h1>
+                <p>399 Bath</p>
+                <div class="flex gap-4 flex-row">
+                    <button class="btn btn-active btn-warning">Edit</button>
+                    <button class="btn btn-active btn-error">Delete</button>
+                </div>
+            </div>
+    </section>
+    <script src="/public/js/firstPractic-JS.js"></script>
+</body>
+
+</html>

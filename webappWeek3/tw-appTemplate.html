@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>framework_user</title>
+
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="navbar max-w-6xl mx-auto px-6 w-full flex-col md:flex-row gap-4 md:gap-0 py-4">
+        <div class="flex-1">
+            <a class="text-xl font-bold text-primary">AppLogo</a>
+        </div>
+
+        <div class="flex gap-6 items-center">
+            <a class="link link-hover">Features</a>
+            <a class="link link-hover">Pricing</a>
+            <a class="link link-hover">Contact</a>
+            <button class="btn btn-primary">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-sky-50 m-5 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+        <h1 class="text-4xl font-bold">
+            The simple way to manage your
+            <span class="text-blue-500">tasks</span>
+        </h1>
+
+        <p class="py-6 text-gray-500 max-w-xl mx-auto">
+            Stop juggling apps and spreadsheets. Our platform brings all your
+            productivity tools into one intelligent workspace.
+        </p>
+
+        <div class="flex justify-center gap-4">
+            <button class="btn btn-primary bg-blue-500">
+                Start Free Trial
+            </button>
+            <button class="btn btn-outline btn-info">
+                Watch Demo
+            </button>
+        </div>
+
+        <!-- Screenshot -->
+        <div class="w-full mt-5 px-6">
+            <div class="bg-gray-200 h-64 rounded-xl shadow flex items-center justify-center">
+                <span class="text-gray-400">
+                    Product Screenshot Placeholder
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section title -->
+    <div class="flex justify-center items-center mt-10 mb-10">
+        <h2 class="text-2xl font-bold text-center">
+            Everything you need, nothing you don't.
+        </h2>
+    </div>
+
+    <!-- Features -->
+    <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-6 mb-10">
+
+        <div class="bg-white rounded-xl shadow p-8 text-center flex flex-col items-center">
+            <div class="w-14 h-14 bg-blue-100 rounded-full "></div>
+            <h3 class="text-xl font-bold mb-2">Automated Workflow</h3>
+            <p class="text-gray-500">
+                Set up tasks to run automatically based on triggers and conditions.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-8 text-center flex flex-col items-center">
+            <div class="w-14 h-14 bg-blue-100 rounded-full "></div>
+            <h3 class="text-xl font-bold mb-2">Team Collaboration</h3>
+            <p class="text-gray-500">
+                Share projects, assign roles, and track progress.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-8 text-center flex flex-col items-center">
+            <div class="w-14 h-14 bg-blue-100 rounded-full "></div>
+            <h3 class="text-xl font-bold mb-2">Seamless Integrations</h3>
+            <p class="text-gray-500">
+                Connect easily with tools you already use.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="mt-auto py-6 text-center text-gray-400 text-sm bg-[rgb(23,32,44)] mt-10">
+            © 2024 AppName. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

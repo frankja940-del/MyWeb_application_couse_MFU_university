@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-base-200 flex items-center justify-center min-h-screen">
+
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title justify-center">Login</h2>
+
+            <input type="text" id="username" placeholder="Username" class="input input-bordered w-full">
+            <input type="password" id="password" placeholder="Password" class="input input-bordered w-full">
+
+            <button onclick="login()" class="btn btn-primary w-full mt-4">Login</button>
+        </div>
+    </div>
+
+    <script>
+        var users = [];
+
+        if (sessionStorage.getItem("users") == null) {
+            users = [
+                { id: 1, username: "admin", password: "1111", role: 1, status: true },
+                { id: 2, username: "aaa", password: "2222", role: 2, status: true },
+                { id: 3, username: "bbb", password: "3333", role: 2, status: false }
+            ];
+            sessionStorage.setItem("users", JSON.stringify(users));
+        }
+
+        function login() {
+
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            let users = JSON.parse(sessionStorage.getItem("users"));
+            let user = users.find(u => u.username === username && u.password === password);
+
+            if (!user) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: 'Wrong username or password'
+                });
+                return;
+            }
+
+            if (!user.status) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: 'Your account is disabled'
+                });
+                return;
+            }
+
+            sessionStorage.setItem("currentUser", JSON.stringify(user));
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Successful',
+                text: 'Welcome ' + user.username,
+                timer: 1500,
+                showConfirmButton: false
+            }).then(() => {
+                if (user.role === 1) {
+                    window.location = "admin.html";
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

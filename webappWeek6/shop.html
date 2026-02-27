@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>MFU Shop</title>
+</head>
+
+<body>
+    <!-- 1. main container -->
+    <div class="grid grid-cols-[200px_1fr] min-h-screen">
+        <!-- 2. sidebar -->
+        <aside class="flex flex-col justify-between items-center p-4 bg-primary-content">
+            <h1 class="text-xl font-bold">MFU Shop</h1>
+            <button id="btnLogout" class="btn btn-error">Logout</button>
+        </aside>
+
+        <!-- 3. main content -->
+        <main>
+            <!-- 4. top add button -->
+            <div class="flex justify-between p-4 ">
+                <h3 id="welcome" class="text-xl fornt-bold text-primary"> welcome Peter</h3>
+                <button id="add" onclick="popModal()" class="btn btn-success">Add</button>
+            </div>
+
+            <!-- 5. product container -->
+            <section id="product_display" class="flex flex-row flex-wrap gap-3 p-4">
+                <!-- 6. product card -->
+                <!-- <div class="bg-base-300 rounded-lg shadow-xl p-4 text-center">
+                    <img src="/public/images/hat.png" alt="hat">
+                    <h3 class="text-lg font-bold">hat</h3>
+                    <p>99 baht</p>
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-error">Delete</button>
+                </div>
+
+                
+                <div class="bg-base-300 rounded-lg shadow-xl p-4 text-center">
+                    <img src="/public/images/shoes.png" alt="shoes">
+                    <h3 class="text-lg font-bold">shoes</h3>
+                    <p>199 baht</p>
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-error">Delete</button>
+                </div>
+
+                <div class="bg-base-300 rounded-lg shadow-xl p-4 text-center">
+                    <img src="/public/images/skirt.png" alt="skirt">
+                    <h3 class="text-lg font-bold">skirt</h3>
+                    <p>399 baht</p>
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-error">Delete</button>
+                </div> -->
+            </section>
+        </main>
+    </div>
+
+
+    <dialog id="my_modal" class="modal">
+        <div class="modal-box">
+            <input id="pname" type="text" class="input input-warning" placeholder="product name">
+            <input id="pprice" type="number" class="input input-warning" placeholder="price">
+            <div class="m-5">
+                <button id="save" onclick="addProduct();" class="btn btn-success">success</button>
+                <button onclick="closeModal();" class="btn btn-neutral">close</button>
+            </div>
+        </div>
+    </dialog>
+    <script src="/webappWeek6/shop.js"></script>
+</body>
+
+</html>

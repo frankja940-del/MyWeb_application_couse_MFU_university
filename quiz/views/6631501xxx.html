@@ -1,0 +1,120 @@
+<!-- 
+    - Create a battle game
+    - Use the JSON array and images given
+    - Each creature's power = basePower + random number (0-50)
+    - Battle is between two random creatures (must be different)
+    - Pop up shows who defeated who with their powers e.g. "Aqua Dragon (100) defeated Iron Golem (85)".
+    - Creature with lower power will lose and disappear
+    - If there is only one creature, the game alerts "Not enough creatures left to battle!".
+    - Reload page to replay
+ -->
+
+<!-- 
+    Rubic
+    - Complete UI (4 points)
+        - Top button 0.5
+        - Card 0.5
+        - Image display 1
+        - Text display 1 
+        - layout 1
+    - Logic (6 points)
+        - dynamic diplay using loop 2
+        - random power 1
+        - random battle pairs 2 (must not be the same creatures)
+        - remove lost creature 1
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+    <div id="maincontainer" class="flex flex-col min-h-screen bg-black">
+        <aside class="flex flex-col justify-between items-center p-4 ">
+            <button id="btnbettle" class="btn btn-error rounded-2xl text-white mt-0.5" onclick="battle()">Start Random
+                battle</button>
+        </aside>
+        <section id="product_display" class="flex flex-row m-xl gap-3 p-4">
+
+        </section>
+    </div>
+
+    <script>
+
+
+        const initialCreatures = [
+            { id: 1, name: "Aqua Dragon", rarity: "Legendary", basePower: 90 },
+            { id: 2, name: "Shadow Stalker", rarity: "Epic", basePower: 75 },
+            { id: 3, name: "Iron Golem", rarity: "Common", basePower: 50 },
+            { id: 4, name: "Solar Griffin", rarity: "Legendary", basePower: 88 },
+            { id: 5, name: "Void Weaver", rarity: "Epic", basePower: 70 },
+            { id: 6, name: "Forest Sprite", rarity: "Common", basePower: 45 }
+        ];
+
+        let creatures = [...initialCreatures];
+        showProduct()
+
+        function showProduct() {
+            let data = '';
+            creatures.forEach(function (creature) {
+                data += `
+        <div class="bg-base-200 rounded-lg shadow-xl p-4 text-center m-0.5 w-48">
+            <img class="mx-auto h-32" src="/quiz/public/img/${creature.name}.png" alt="${creature.name}">
+            <h3 class="text-lg font-bold">${creature.name}</h3>
+            <p>${creature.rarity}</p>
+            <h1>PWR: ${creature.basePower}</h1>
+        </div>`;
+            });
+            document.querySelector('#product_display').innerHTML = data;
+        }
+
+        function battle() {
+            if (creatures.length < 2) {
+                alert("Not enough creatures left to battle!");
+                return;
+            }
+
+            // สุ่มตัวแรก
+            let index1 = Math.floor(Math.random() * creatures.length);
+
+            // สุ่มตัวที่สอง (ห้ามซ้ำ)
+            let index2;
+            do {
+                index2 = Math.floor(Math.random() * creatures.length);
+            } while (index1 === index2);
+
+            let c1 = creatures[index1];
+            let c2 = creatures[index2];
+
+            // เพิ่มพลังสุ่ม 0-50
+            let power1 = c1.basePower + Math.floor(Math.random() * 51);
+            let power2 = c2.basePower + Math.floor(Math.random() * 51);
+
+            // ใครชนะ
+            if (power1 > power2) {
+                alert(`${c1.name} (${power1}) defeated ${c2.name} (${power2})`);
+                creatures.splice(index2, 1);
+            } else if (power2 > power1) {
+                alert(`${c2.name} (${power2}) defeated ${c1.name} (${power1})`);
+                creatures.splice(index1, 1);
+            } else {
+                alert("Draw! No one is removed.");
+                return;
+            }
+
+            showProduct();
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assets</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
+</head>
+
+<body class="bg-base-200 min-h-screen p-8">
+
+    <!-- Top bar -->
+    <div class="flex justify-between items-center bg-purple-500 text-white p-4 rounded">
+        <h1 class="text-xl font-bold">Asset List</h1>
+        <div class="space-x-2">
+            <button id="qrBtn" class="btn btn-warning ">QR code</button>
+            <button id="logoutBtn" class="btn btn-error">Logout</button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto mt-6 bg-white rounded shadow">
+        <table class="table">
+            <thead class="bg-base-300">
+                <tr>
+                    <th>
+                        <input type="checkbox" id="checkAll" class="checkbox" />
+                    </th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="assetBody"></tbody>
+        </table>
+        <div id="qrArea" class="flex gap-6 mt-6 flex-wrap"></div>
+    </div>
+
+    <!-- Selected IDs -->
+    <div id="result" class="mt-4 text-blue-600 font-bold"></div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        const assets = [
+            { id: "66250020564001", name: "laptop", status: 1 },
+            { id: "67300010364002", name: "projector", status: 0 },
+            { id: "74400120561020", name: "UPS", status: 0 },
+        ];
+
+        const tbody = document.getElementById("assetBody");
+        const qrArea = document.getElementById("qrArea");
+        const checkAll = document.getElementById("checkAll");
+        const qrBtn = document.getElementById("qrBtn");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        // render table // foreach function (a)
+        assets.forEach(a => {
+            tbody.innerHTML += `
+    <tr>
+      <td><input type="checkbox" class="rowCheck checkbox" value="${a.id}"></td>
+      <td>${a.id}</td>
+      <td>${a.name}</td>
+      <td>${a.status ? "Normal" : "Lost"}</td>
+    </tr>
+  `;
+        });
+
+        // select all
+        checkAll.onchange = () => {
+            document.querySelectorAll(".rowCheck")
+                .forEach(cb => cb.checked = checkAll.checked);
+        };
+
+        // QR button
+        qrBtn.onclick = () => {
+            const checked = [...document.querySelectorAll(".rowCheck:checked")]
+                .map(cb => cb.value);
+
+            if (checked.length === 0) {
+                Swal.fire("Error", "Please select at least one asset", "error");
+                return;
+            }
+
+            qrArea.innerHTML = "";
+
+            checked.forEach(id => {
+                const box = document.createElement("div");
+                box.className = "text-center";
+
+                const qrDiv = document.createElement("div");
+                box.appendChild(qrDiv);
+
+                new QRCode(qrDiv, { text: id, width: 120, height: 120 });
+
+                const label = document.createElement("p");
+                label.innerText = id;
+                label.className = "mt-2 font-bold text-sm";
+                box.appendChild(label);
+
+                qrArea.appendChild(box);
+            });
+        };
+
+        // logout
+        logoutBtn.onclick = () => {
+            window.location.href = "login.html";
+        };
+    </script>
+
+
+</body>
+
+</html>

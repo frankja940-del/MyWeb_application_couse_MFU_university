@@ -1,0 +1,15 @@
+ div {
+     background-color: rgb(246, 110, 110);
+     padding: 16px;
+     border: 1px solid black;
+     text-align: center;
+ }
+
+ #container {
+     display: flex;
+     background-color: #83c8e6;
+     flex-direction: column;
+     padding: 10px;
+     gap: 10px;
+     align-items: center;
+ }

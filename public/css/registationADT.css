@@ -1,0 +1,219 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+.biggestContainer {
+    display: grid;
+    grid-template-columns: 40% auto;
+    height: 70%;
+    width: 70%;
+    background-color: #dd3939;
+    border-radius: 20px;
+    box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.2);
+    /* /-left+right/-up+down/bluration */
+    /* add shadow into biggestContainer */
+
+}
+
+/* leftside */
+.leftside {
+    background-color: #ffa6ff;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#logo {
+    width: 80px;
+    height: 80px;
+    aspect-ratio: 1 / 1;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo h1 {
+    margin: 0;
+    padding: 0;
+    color: #ffa6ff;
+}
+
+#schoolname {
+    color: #ffffff;
+    text-align: center;
+    margin: 10px;
+}
+
+#subtitile p {
+    color: white;
+}
+
+/* rightside  */
+.rightside {
+    background-color: #ffffff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+
+    padding: 5%;
+}
+
+/* title */
+.rightside h2 {
+    margin-top: 0;
+    margin-bottom: 5%;
+    padding: 0;
+}
+
+/* email */
+.email {
+    width: 100%;
+}
+
+.email label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.email input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+
+}
+
+/* password */
+.password {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+
+}
+
+.password .field {
+    flex: 1;
+}
+
+.password input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* gender */
+
+#gendertext {
+    margin-top: 20px;
+}
+
+.gender {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.gender label {
+    display: inline-flex;
+    gap: 5px;
+    font-size: 14px;
+
+}
+
+/* Intended Major */
+#majortext {
+    margin-top: 20px;
+}
+
+.majorselect {
+    margin-top: 6px;
+
+
+}
+
+.majorselect select {
+    width: 100%;
+    height: 48px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 2;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* checkbox */
+.checkbox {
+    margin-top: 20px;
+}
+
+/* .registerbutton */
+.registerbutton {
+    width: 100%;
+}
+
+.registerbutton button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    margin: 10px;
+}
+
+/* rwd */
+@media (max-width: 768px) {
+
+    body {
+        align-items: flex-start;
+        padding: 20px;
+        height: auto;
+    }
+
+    .biggestContainer {
+        grid-template-columns: 1fr;
+        width: 100%;
+        height: auto;
+    }
+
+    .leftside {
+        border-radius: 20px 20px 0 0;
+        padding: 30px 10px;
+    }
+
+    .rightside {
+        border-radius: 0 0 20px 20px;
+        padding: 20px;
+    }
+
+    .password {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .registerbutton button {
+        margin: 0;
+        margin-top: 20px;
+    }
+}
